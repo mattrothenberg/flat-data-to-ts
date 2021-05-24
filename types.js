@@ -1,3 +1,4 @@
+const path = require("path");
 const csv = require("csvtojson");
 const fs = require("fs");
 const {
@@ -24,7 +25,7 @@ async function quicktypeJSON(targetLanguage, typeName, jsonString) {
 
 async function main() {
   csv()
-    .fromFile("./data.csv")
+    .fromFile(path.resolve(__dirname, "data.csv"))
     .then(async (json) => {
       const { lines } = await quicktypeJSON(
         "ts",
